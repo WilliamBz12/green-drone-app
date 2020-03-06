@@ -36,10 +36,10 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
     _widhtSize = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(title: Text("Índice de vegetação")),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, "/vegetation_index/image-picker"),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () =>
+      //       Navigator.pushNamed(context, "/vegetation_index/image-picker"),
+      // ),
       body: Container(
         padding: EdgeInsets.all(15),
         child: Column(
