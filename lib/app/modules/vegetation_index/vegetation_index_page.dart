@@ -36,10 +36,10 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
     _widhtSize = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(title: Text("Índice de vegetação")),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, "/vegetation_index/image-picker"),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () =>
+      //       Navigator.pushNamed(context, "/vegetation_index/image-picker"),
+      // ),
       body: Container(
         padding: EdgeInsets.all(15),
         child: Column(
@@ -59,8 +59,9 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
       stream: _bloc.outStateButton,
       initialData: false,
       builder: (context, snapshot) {
+        bool isTap = snapshot.hasData ? snapshot.data : false;
         return CustomButtonWidget(
-          onTap: snapshot.data ? _sendImage : null,
+          onTap: isTap ? _sendImage : null,
           width: double.infinity,
           text: "Aplicar TGI",
           isLoading: _isLoading,

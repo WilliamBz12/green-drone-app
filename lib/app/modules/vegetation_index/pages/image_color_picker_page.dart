@@ -80,7 +80,7 @@ class _ColorPickerWidgetState extends State<ColorPickerWidget> {
                       ]),
                 ),
                 Positioned(
-                  child: Text('${selectedColor}',
+                  child: Text('$selectedColor',
                       style: TextStyle(
                           color: Colors.white,
                           backgroundColor: Colors.black54)),
