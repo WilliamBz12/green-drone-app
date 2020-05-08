@@ -59,8 +59,9 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
       stream: _bloc.outStateButton,
       initialData: false,
       builder: (context, snapshot) {
+        bool isTap = snapshot.hasData ? snapshot.data : false;
         return CustomButtonWidget(
-          onTap: snapshot.data ? _sendImage : null,
+          onTap: isTap ? _sendImage : null,
           width: double.infinity,
           text: "Aplicar TGI",
           isLoading: _isLoading,
