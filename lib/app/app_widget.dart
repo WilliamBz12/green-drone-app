@@ -10,6 +10,7 @@ class AppWidget extends StatelessWidget {
       title: 'Green Drone',
       theme: AppThemes.lightTheme,
       initialRoute: '/',
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: Modular.generateRoute,
     );
   }

@@ -24,23 +24,13 @@ class _SplashPageState extends State<SplashPage> {
       body: Container(
         width: double.maxFinite,
         height: double.maxFinite,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background.jpg"),
-            colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
-            fit: BoxFit.fill,
-          ),
-        ),
+        color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Green Drone",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 36,
-              ),
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Image.asset("assets/images/icon.png"),
             ),
             SizedBox(
               height: 20,
