@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:green_drone/app/app_widget.dart';
 import 'package:green_drone/app/modules/home/home_module.dart';
+import 'package:green_drone/app/modules/splash/splash_module.dart';
 
 import 'core/api/api_client_provider.dart';
 import 'modules/vegetation_index/vegetation_index_module.dart';
@@ -16,9 +17,9 @@ class AppModule extends MainModule {
       ];
 
   @override
-  List<Router> get routers => [
-        Router('/', module: HomeModule()),
-        Router('/vegetation_index', module: VegetationIndexModule()),
+  List<ModularRouter> get routers => [
+        ModularRouter('/', module: SplashModule()),
+        ModularRouter('/vegetation_index', module: VegetationIndexModule()),
       ];
 
   @override

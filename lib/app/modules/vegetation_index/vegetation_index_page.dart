@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:green_drone/app/shared/widgets/custom_button_widget.dart';
 
@@ -16,15 +15,14 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
   bool _isLoading = false;
   double _widhtSize;
 
-  void _sendImage() async {
+  void _sendImage(context) async {
     setState(() => _isLoading = true);
     final result = await _bloc.sendImage();
 
     if (!result) {
-      Flushbar(
-        message: "",
-        duration: Duration(seconds: 3),
-      )..show(context);
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text("Image não encontrada"),
+      ));
     } else {
       Navigator.pushNamed(context, "/vegetation_index/image-page");
     }
@@ -35,11 +33,9 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
   Widget build(BuildContext context) {
     _widhtSize = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(title: Text("Índice de vegetação")),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () =>
-      //       Navigator.pushNamed(context, "/vegetation_index/image-picker"),
-      // ),
+      appBar: AppBar(
+        title: Text("Green Drone"),
+      ),
       body: Container(
         padding: EdgeInsets.all(15),
         child: Column(
@@ -47,7 +43,19 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
           children: <Widget>[
             _buildImageSelect(),
             _buildImageSelected(),
-            _buildButtonApplyTGI()
+            Column(
+              children: [
+                _buildButtonApplyTGI(),
+                SizedBox(
+                  height: 10,
+                ),
+                CustomButtonWidget(
+                  onTap: null,
+                  width: double.infinity,
+                  text: "VARI (Em breve)",
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -59,11 +67,10 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
       stream: _bloc.outStateButton,
       initialData: false,
       builder: (context, snapshot) {
-        bool isTap = snapshot.hasData ? snapshot.data : false;
         return CustomButtonWidget(
-          onTap: isTap ? _sendImage : null,
+          onTap: snapshot?.data ?? false ? () => _sendImage(context) : null,
           width: double.infinity,
-          text: "Aplicar TGI",
+          text: "TGI",
           isLoading: _isLoading,
         );
       },
@@ -88,7 +95,7 @@ class _VegetationIndexPageState extends State<VegetationIndexPage> {
           return Text(snapshot.error);
         }
 
-        return Text("Selecione uma imagem...");
+        return Text("Selecione uma imagem");
       },
     );
   }

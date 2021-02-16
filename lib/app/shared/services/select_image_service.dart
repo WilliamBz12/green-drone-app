@@ -5,14 +5,13 @@ import 'package:dartz/dartz.dart';
 class SelectImageService {
   Future<Either<String, File>> fetchFromGallery() async {
     try {
-
       final image = await ImagePicker.pickImage(
         source: ImageSource.gallery,
         maxWidth: 480,
         maxHeight: 600,
       );
 
-      if (image == null) return Left("Imagem não existe");
+      if (image == null) return Left("Imagem não encontrada");
 
       return Right(image);
     } on FileSystemException {
@@ -22,7 +21,6 @@ class SelectImageService {
 
   Future<Either<String, File>> fetchFromCamera() async {
     try {
-      
       final image = await ImagePicker.pickImage(
         source: ImageSource.camera,
         maxWidth: 480,

@@ -14,7 +14,7 @@ class CustomButtonWidget extends StatelessWidget {
     @required this.text,
     @required this.onTap,
     this.color = AppColors.green,
-    this.iconsColor = Colors.black,
+    this.iconsColor = Colors.white,
     this.sufixIcon,
     this.width,
     this.isLoading = false,
@@ -29,7 +29,7 @@ class CustomButtonWidget extends StatelessWidget {
       ),
       height: 50,
       child: RaisedButton(
-        disabledColor: AppColors.aluminum,
+        disabledColor: Colors.grey[500],
         child: isLoading ? CircularProgressIndicator() : _buildTitle(),
         color: color,
         shape: RoundedRectangleBorder(

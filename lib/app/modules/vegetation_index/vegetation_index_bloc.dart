@@ -15,7 +15,7 @@ class VegetationIndexBloc extends BlocBase {
   Stream<File> get outImage => _imageController.stream;
 
   Stream<bool> get outStateButton =>
-      _imageController.stream.map((file) => file != null);
+      _imageController.stream.map((event) => event != null);
 
   final _urlController = BehaviorSubject<String>();
   Stream<String> get urlImage => _urlController.stream;
@@ -40,7 +40,7 @@ class VegetationIndexBloc extends BlocBase {
     final result = await vegetationIndexService.sendImage(
       image: _imageController.value,
     );
-    
+
     result.fold(
       (error) => _urlController.addError(error),
       (urlImage) => _urlController.add(urlImage.url),

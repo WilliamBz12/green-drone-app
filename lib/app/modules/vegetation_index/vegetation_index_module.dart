@@ -1,5 +1,4 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:green_drone/app/modules/vegetation_index/pages/image_color_picker_page.dart';
 import 'package:green_drone/app/modules/vegetation_index/pages/image_page.dart';
 import 'package:green_drone/app/modules/vegetation_index/vegetation_index_page.dart';
 import 'package:green_drone/app/modules/vegetation_index/vegetation_index_service.dart';
@@ -22,10 +21,9 @@ class VegetationIndexModule extends ChildModule {
       ];
 
   @override
-  List<Router> get routers => [
-        Router('/', child: (_, args) => VegetationIndexPage()),
-        Router('/image-page', child: (_, args) => ImagePage()),
-        Router('/image-picker', child: (_, args) => ColorPickerWidget()),
+  List<ModularRouter> get routers => [
+        ModularRouter('/', child: (_, args) => VegetationIndexPage()),
+        ModularRouter('/image-page', child: (_, args) => ImagePage()),
       ];
 
   static Inject get to => Inject<VegetationIndexModule>.of();
